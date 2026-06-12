@@ -1,0 +1,94 @@
+.footer {
+  position: relative;
+  background: var(--plum);
+  padding: 14vh 36px 40px;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer__cta {
+  max-width: 1100px;
+  margin: 0 auto 4vh;
+  text-align: center;
+}
+.footer__benchmark {
+  font-size: 6vw;
+  margin: 0;
+  color: #fff;
+}
+
+.footer__3d {
+  position: relative;
+  width: 100%;
+  height: 46vh;
+  min-height: 320px;
+  z-index: 1;
+}
+
+.footer__mail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin: 2vh auto 10vh;
+  text-align: center;
+}
+.footer__mail img {
+  width: 44px;
+  filter: brightness(0) invert(1);
+  margin-bottom: 8px;
+  transition: transform 0.4s var(--ease);
+}
+.footer__mail:hover img { transform: translateY(-6px); }
+.footer__mail-text { font-size: 7vw; }
+.footer__mail-sub { font-size: 14px; opacity: 0.6; }
+
+.footer__grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto 8vh;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 40px;
+}
+.footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer__col-h {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  opacity: 0.5;
+  margin-bottom: 6px;
+}
+.footer__col a {
+  font-size: 15px;
+  opacity: 0.85;
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.footer__col a:hover { opacity: 1; transform: translateX(4px); }
+.footer__col--social a span { opacity: 0.5; font-size: 12px; margin-right: 6px; }
+
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  max-width: 1400px;
+  margin: 0 auto;
+  font-size: 12px;
+  opacity: 0.55;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 24px;
+}
+
+@media (max-width: 900px) {
+  .footer__benchmark { font-size: 11vw; }
+  .footer__mail-text { font-size: 13vw; }
+  .footer__grid { gap: 30px; }
+  .footer__bottom { flex-direction: column; }
+}

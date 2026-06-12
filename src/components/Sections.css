@@ -1,0 +1,320 @@
+/* ===== shared ===== */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin: 0 0 28px;
+}
+.section-label img { height: 13px; }
+.section-label--gold { color: var(--gold); }
+.section-label--gold img { filter: none; }
+.section-label--dark { color: var(--plum); }
+
+/* ================= ABOUT (plum) ================= */
+.about {
+  position: relative;
+  background: var(--plum);
+  color: #fff;
+  padding: 16vh 36px 12vh;
+  text-align: center;
+  overflow: hidden;
+}
+.about .section-label img { filter: brightness(0) invert(1); }
+.about__head {
+  font-size: 4.4vw;
+  line-height: 1.25;
+  max-width: 20ch;
+  margin: 0 auto 10vh;
+  color: #fff;
+}
+.about__torn {
+  width: 230px;
+  margin: 0 auto;
+  filter: grayscale(0.3) contrast(1.05);
+}
+.about__torn img { width: 100%; }
+.about__mission {
+  font-size: 2vw;
+  max-width: 24ch;
+  margin: 8vh auto 0;
+  color: var(--gold);
+}
+
+/* ================= WHAT I DO (green) ================= */
+.whatido {
+  background: #013300;
+  color: #fff;
+  padding: 14vh 36px;
+}
+.whatido__label {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin: 0 0 30px;
+}
+.whatido__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+.whatido__list li {
+  font-size: 9vw;
+  line-height: 0.95;
+  color: #fff;
+}
+
+/* ================= CRAFTING LEGACIES (cream) ================= */
+.crafting {
+  background: var(--cream);
+  color: var(--plum);
+  padding: 14vh 36px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
+  align-items: end;
+}
+.crafting__title {
+  font-size: 13vw;
+  margin: 0;
+  color: var(--plum);
+}
+.crafting__meta p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 0 24px;
+}
+.crafting__quote {
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--brown);
+}
+
+/* ================= WORKS (green) ================= */
+.works {
+  position: relative;
+  background: #013300;
+  color: #fff;
+  padding: 14vh 36px;
+  overflow: hidden;
+}
+.works__watermark {
+  position: absolute;
+  top: 6vh;
+  left: 50%;
+  translate: -50% 0;
+  font-size: 22vw;
+  color: rgba(255, 255, 255, 0.05);
+  letter-spacing: 0.1em;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.works__head {
+  position: relative;
+  text-align: center;
+  margin-bottom: 8vh;
+}
+.works__title {
+  font-size: 7vw;
+  margin: 0;
+  color: var(--gold);
+}
+.works__list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14vh;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.work {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.work:nth-child(even) .work__media { order: 2; }
+.work__media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  aspect-ratio: 16 / 10;
+}
+.work__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+.work:hover .work__media img { transform: scale(1.05); }
+.work__visit {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 64px;
+  opacity: 0;
+  transform: scale(0.5) rotate(-40deg);
+  transition: 0.5s var(--ease);
+}
+.work:hover .work__visit { opacity: 1; transform: scale(1) rotate(0); }
+.work__name {
+  font-size: 5vw;
+  margin: 0 0 24px;
+  color: var(--gold);
+}
+.work__desc {
+  font-size: 16px;
+  line-height: 1.7;
+  opacity: 0.85;
+  max-width: 42ch;
+  margin: 0 0 20px;
+}
+.work__meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 14px;
+  margin: 0;
+}
+
+/* ================= PHILOSOPHY (cream) ================= */
+.phil {
+  position: relative;
+  background: var(--cream);
+  color: var(--plum);
+  padding: 18vh 36px;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+.phil__motif {
+  width: 56px;
+  margin: 0 auto 40px;
+  opacity: 0.85;
+  animation: spin 16s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.phil__quote {
+  font-size: 3vw;
+  line-height: 1.45;
+  margin: 0;
+  color: var(--plum);
+}
+
+/* ================= SERVICES (cream) ================= */
+.services {
+  position: relative;
+  background: var(--cream);
+  color: var(--plum);
+  padding: 10vh 36px 16vh;
+}
+.services__infobox {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 16px;
+  border: 1px solid rgba(40, 8, 34, 0.3);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 6vh;
+}
+.services__what {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin: 0 0 4vh;
+}
+.services__stack {
+  position: relative;
+  text-align: center;
+}
+.services__list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-size: 12vw;
+  line-height: 0.92;
+  color: var(--plum);
+}
+.services__provided {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  translate: -50% 0;
+  font-size: 4vw;
+  color: var(--pink);
+  pointer-events: none;
+}
+.services__note {
+  max-width: 50ch;
+  margin: 8vh auto 0;
+  text-align: center;
+  font-size: 15px;
+  opacity: 0.75;
+}
+
+/* ================= PLAYBOOK (sand) ================= */
+.playbook {
+  background: var(--sand);
+  color: var(--plum);
+  padding: 14vh 0;
+  overflow: hidden;
+}
+.playbook__head {
+  text-align: center;
+  padding: 0 36px;
+  margin-bottom: 7vh;
+}
+.playbook__title {
+  font-size: 11vw;
+  margin: 0;
+  color: var(--plum);
+}
+.playbook__sub { font-size: 18px; opacity: 0.7; margin: 6px 0 0; }
+.playbook__marquee { width: 100%; overflow: hidden; }
+.playbook__track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: playMarquee 60s linear infinite;
+}
+.playbook__track:hover { animation-play-state: paused; }
+.playbook__item {
+  width: 26vw;
+  max-width: 400px;
+  flex: none;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.playbook__item img { width: 100%; height: 100%; object-fit: cover; }
+@keyframes playMarquee { to { transform: translateX(-50%); } }
+
+/* ===== responsive ===== */
+@media (max-width: 900px) {
+  .about__head { font-size: 8vw; }
+  .about__mission { font-size: 5vw; }
+  .whatido__list li { font-size: 14vw; }
+  .crafting { grid-template-columns: 1fr; gap: 30px; }
+  .crafting__title { font-size: 22vw; }
+  .work { grid-template-columns: 1fr; gap: 20px; }
+  .work:nth-child(even) .work__media { order: 0; }
+  .work__name { font-size: 11vw; }
+  .works__title { font-size: 13vw; }
+  .phil__quote { font-size: 6vw; }
+  .services__list { font-size: 16vw; }
+  .services__provided { font-size: 8vw; }
+  .playbook__item { width: 60vw; }
+  .playbook__title { font-size: 20vw; }
+}

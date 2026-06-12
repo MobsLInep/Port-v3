@@ -1,0 +1,107 @@
+/* ===== Fonts (real files pulled from source site) ===== */
+@font-face {
+  font-family: "thunder";
+  src: url("/assets/fonts/Thunder-BlackLC.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "editorial";
+  src: url("/assets/fonts/PPEditorialNew-UltralightItalic.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "playground";
+  src: url("/assets/fonts/PPPlayground-Medium.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "product";
+  src: url("/assets/fonts/Product.ttf") format("truetype");
+  font-display: swap;
+}
+
+/* ===== Design tokens (extracted from original CSS) ===== */
+:root {
+  --plum: #280822;       /* primary background */
+  --plum-soft: #28082224;
+  --cream: #ddc8c5;      /* body base bg */
+  --pink: #e06c8f;       /* accent */
+  --gold: #efcc92;
+  --gold-2: #e8bc6b;
+  --sand: #ede4d3;
+  --brown: #7f3b00;
+  --white: #fff;
+  --ease: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: var(--plum);
+  color: var(--white);
+  font-family: "product", "DM Sans", Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Display utility */
+.font-thunder {
+  font-family: "thunder", sans-serif;
+  text-transform: uppercase;
+  line-height: 0.82;
+  letter-spacing: -0.01em;
+}
+.font-editorial {
+  font-family: "editorial", serif;
+  font-style: italic;
+  font-weight: 200;
+}
+.font-playground {
+  font-family: "playground", cursive;
+}
+.font-product {
+  font-family: "product", sans-serif;
+}
+
+.app {
+  position: relative;
+  width: 100%;
+}
+
+/* generic scroll-reveal initial state */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(40px);
+}
