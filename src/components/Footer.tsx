@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import "./Footer.css";
 
 const Scene3D = lazy(() => import("../three/Scene3D"));
@@ -15,6 +15,17 @@ const socials = [
 ];
 
 export default function Footer({ ready }: { ready: boolean }) {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`Portfolio enquiry — ${form.name || "Hello"}`);
+    const body = encodeURIComponent(
+      `${form.message}\n\n— ${form.name}${form.email ? ` (${form.email})` : ""}`
+    );
+    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+  };
+
   return (
     <footer className="footer">
       <div className="footer__cta">
@@ -23,6 +34,44 @@ export default function Footer({ ready }: { ready: boolean }) {
           <em className="font-editorial">solution.</em>
         </h2>
       </div>
+
+      <form className="footer__form" onSubmit={onSubmit} data-reveal>
+        <div className="footer__field">
+          <label htmlFor="cf-name">Your name</label>
+          <input
+            id="cf-name"
+            type="text"
+            required
+            placeholder="Jane Doe"
+            value={form.name}
+            onChange={(e) => setForm({ ...form, name: e.target.value })}
+          />
+        </div>
+        <div className="footer__field">
+          <label htmlFor="cf-email">Email</label>
+          <input
+            id="cf-email"
+            type="email"
+            placeholder="jane@company.com"
+            value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
+          />
+        </div>
+        <div className="footer__field footer__field--full">
+          <label htmlFor="cf-msg">What are you building?</label>
+          <textarea
+            id="cf-msg"
+            rows={3}
+            required
+            placeholder="A few lines about your project, problem or role…"
+            value={form.message}
+            onChange={(e) => setForm({ ...form, message: e.target.value })}
+          />
+        </div>
+        <button type="submit" className="footer__submit">
+          Send message <span aria-hidden>→</span>
+        </button>
+      </form>
 
       <div className="footer__3d">
         {ready && (
@@ -42,6 +91,9 @@ export default function Footer({ ready }: { ready: boolean }) {
         <div className="footer__col">
           <span className="footer__col-h">Index</span>
           <a href={PORTFOLIO} target="_blank" rel="noreferrer">Visit my portfolio</a>
+          <a href="/files/shreyansh-samaddar-resume.pdf" target="_blank" rel="noreferrer" download>
+            Download résumé
+          </a>
           <a href={`mailto:${EMAIL}`}>Send an email</a>
           <a
             href="#home"

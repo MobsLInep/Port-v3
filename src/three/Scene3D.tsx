@@ -11,11 +11,13 @@ type ModelProps = {
   scale?: number;
   position?: [number, number, number];
   rotationSpeed?: number;
+  /** treat the model as a static art object: no spin, only subtle idle drift */
+  float?: boolean;
   /** override every mesh material with a glossy tinted material */
   tint?: string;
 };
 
-function SpinningModel({ url, scale = 1, position = [0, 0, 0], rotationSpeed = 0.3, tint }: ModelProps) {
+function SpinningModel({ url, scale = 1, position = [0, 0, 0], rotationSpeed = 0.3, float = false, tint }: ModelProps) {
   const { scene } = useGLTF(url);
   const ref = useRef<THREE.Group>(null);
 
@@ -29,9 +31,9 @@ function SpinningModel({ url, scale = 1, position = [0, 0, 0], rotationSpeed = 0
         if (m.isMesh) {
           m.material = new THREE.MeshStandardMaterial({
             color: new THREE.Color(tint),
-            roughness: 0.22,
-            metalness: 0.0,
-            envMapIntensity: 1.4,
+            roughness: 0.12,
+            metalness: 0.9,
+            envMapIntensity: 2.1,
           });
         }
       });
@@ -45,10 +47,18 @@ function SpinningModel({ url, scale = 1, position = [0, 0, 0], rotationSpeed = 0
   }, [scene, tint]);
 
   useFrame((state, delta) => {
-    if (ref.current) {
+    if (!ref.current) return;
+    const px = state.pointer.x;
+    const py = state.pointer.y;
+    if (float) {
+      // Static sculpture: a near-imperceptible drift, so the page reads as a
+      // print cover that happens to live on the web — composition, not animation.
+      const t = state.clock.elapsedTime;
+      ref.current.position.y = position[1] + Math.sin(t * 0.32) * 0.03;
+      ref.current.rotation.y = THREE.MathUtils.lerp(ref.current.rotation.y, Math.sin(t * 0.1) * 0.025 + px * 0.03, 0.03);
+      ref.current.rotation.x = THREE.MathUtils.lerp(ref.current.rotation.x, -py * 0.025, 0.025);
+    } else {
       ref.current.rotation.y += delta * rotationSpeed;
-      const px = state.pointer.x;
-      const py = state.pointer.y;
       ref.current.rotation.x = THREE.MathUtils.lerp(ref.current.rotation.x, -py * 0.18, 0.05);
       ref.current.position.x = THREE.MathUtils.lerp(ref.current.position.x, position[0] + px * 0.25, 0.05);
     }
@@ -77,18 +87,19 @@ export default function Scene3D({ variant, showBackground = false }: Scene3DProp
       dpr={[1, 2]}
       style={{ width: "100%", height: "100%", pointerEvents: "none" }}
     >
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[5, 6, 5]} intensity={1.2} />
-      <directionalLight position={[-5, -2, -3]} intensity={0.4} />
+      <ambientLight intensity={0.45} />
+      <directionalLight position={[5, 6, 5]} intensity={1.7} />
+      <directionalLight position={[-6, 1, 2]} intensity={0.7} color="#ffd9e6" />
+      <directionalLight position={[-5, -2, -3]} intensity={0.35} />
       <Suspense fallback={null}>
         {isFlower ? (
           <>
             <SpinningModel
               url="/assets/images/banner/Flower2.glb"
-              scale={3.2}
-              position={[0, 0, 0]}
+              scale={9.6}
+              position={[0.35, -1.6, 0]}
               rotationSpeed={0.4}
-              tint="#a8203a"
+              tint="#b01f42"
             />
             <Environment
               files="/assets/images/banner/pretoria_gardens_1k_comp.hdr"

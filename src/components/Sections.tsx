@@ -25,19 +25,10 @@ export function About() {
   );
 }
 
-/* ================= WHAT I DO (green) + CRAFTING LEGACIES (cream) ========= */
-export function WhatIDo() {
+/* ================= CRAFTING LEGACIES (cream) ========= */
+export function Crafting() {
   return (
     <>
-      <section className="whatido">
-        <p className="whatido__label" data-reveal>What I do</p>
-        <ul className="whatido__list">
-          {["Deep Learning", "Reinforcement Learning", "Computer Vision", "Generative AI", "Agentic AI"].map((w) => (
-            <li key={w} className="font-thunder" data-reveal>{w}</li>
-          ))}
-        </ul>
-      </section>
-
       <section className="crafting">
         <h2 className="crafting__title font-thunder" data-reveal>
           Building<br />Intelligence
@@ -61,17 +52,29 @@ export function WhatIDo() {
 /* ================= WORKS (green) ================= */
 const PROJECTS = [
   { name: "SSH Honeypot", img: "/assets/images/works/nura.webp",
-    desc: "Intelligent cybersecurity SSH honeypot with realistic terminal simulation and ML-based attack recognition. Accepted at ARES 2026.",
-    meta: "2026 ✦ Publication · ARES", link: "https://github.com/MobsLInep" },
+    desc: "Intelligent cybersecurity SSH honeypot with realistic terminal simulation and ML-based attack recognition, capturing and classifying adversarial sessions.",
+    field: "Publication · ARES 2026", date: "2026",
+    tags: ["Cybersecurity", "Machine Learning", "Telemetry"],
+    metrics: [{ k: "ARES 2026", v: "Accepted" }],
+    link: "https://github.com/MobsLInep/Advance-adaptive-honeypot" },
   { name: "Plant Disease Diffusion", img: "/assets/images/works/frank.webp",
-    desc: "Mask-guided diffusion framework simulating plant disease progression with environment conditioning. FID 43.2, lesion IoU 94.7%.",
-    meta: "2026 ✦ Vision & Generative AI", link: "https://github.com/MobsLInep" },
+    desc: "Mask-guided diffusion framework simulating plant disease progression with environment conditioning and fungicide-intervention modeling.",
+    field: "Vision & Generative AI", date: "Jan–Feb 2026",
+    tags: ["Diffusion", "Computer Vision", "Generative AI"],
+    metrics: [{ k: "FID", v: "43.2" }, { k: "LPIPS", v: "0.14" }, { k: "Lesion IoU", v: "94.7%" }],
+    link: "https://github.com/MobsLInep/Agricultural-Conversational-Image-Editing" },
   { name: "TrackMania RL Agent", img: "/assets/images/works/evok.webp",
     desc: "Deep RL agent (DQN) driving TrackMania Nations Forever via a custom Gymnasium env and live telemetry with checkpoint-based rewards.",
-    meta: "2026 ✦ Deep RL", link: "https://github.com/MobsLInep" },
+    field: "Deep Reinforcement Learning", date: "Dec 2025–Feb 2026",
+    tags: ["Deep RL", "DQN", "Gymnasium"],
+    metrics: [{ k: "Env", v: "Custom Gym" }, { k: "Telemetry", v: "Live" }],
+    link: "https://github.com/MobsLInep/TMNF-RL-basic" },
   { name: "Lattice Gas Simulator", img: "/assets/images/works/truekind.webp",
-    desc: "Cellular-automata fluid dynamics simulator (FHP/HPP) validated against Navier–Stokes and benchmark CFD results.",
-    meta: "2026 ✦ Computational Physics", link: "https://github.com/MobsLInep" },
+    desc: "Cellular-automata fluid dynamics simulator (FHP/HPP) with collision and streaming operators, validated against Navier–Stokes and benchmark CFD.",
+    field: "Computational Physics", date: "Dec 2025–Jan 2026",
+    tags: ["CFD", "Cellular Automata", "FHP / HPP"],
+    metrics: [{ k: "Conserves", v: "Mass + Momentum" }],
+    link: "https://github.com/MobsLInep/LGM-fluid-simulator" },
 ];
 
 export function Works() {
@@ -97,8 +100,21 @@ export function Works() {
             </div>
             <div className="work__info">
               <h3 className="work__name font-editorial">{p.name}</h3>
+              <ul className="work__tags">
+                {p.tags.map((t) => (
+                  <li key={t}>{t}</li>
+                ))}
+              </ul>
               <p className="work__desc">{p.desc}</p>
-              <p className="work__meta">{p.meta} <span>0{i + 1}</span></p>
+              <div className="work__metrics">
+                {p.metrics.map((m) => (
+                  <div className="work__metric" key={m.k}>
+                    <span className="work__metric-v">{m.v}</span>
+                    <span className="work__metric-k">{m.k}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="work__meta">{p.date} ✦ {p.field} <span>0{i + 1}</span></p>
             </div>
           </a>
         ))}

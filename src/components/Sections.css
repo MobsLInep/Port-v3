@@ -164,7 +164,24 @@
 .work:hover .work__visit { opacity: 1; transform: scale(1) rotate(0); }
 .work__name {
   font-size: 5vw;
-  margin: 0 0 24px;
+  margin: 0 0 18px;
+  color: var(--gold);
+}
+.work__tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 20px;
+  padding: 0;
+}
+.work__tags li {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border: 1px solid rgba(239, 204, 146, 0.35);
+  border-radius: 100px;
   color: var(--gold);
 }
 .work__desc {
@@ -172,7 +189,30 @@
   line-height: 1.7;
   opacity: 0.85;
   max-width: 42ch;
-  margin: 0 0 20px;
+  margin: 0 0 22px;
+}
+.work__metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin: 0 0 24px;
+}
+.work__metric {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.work__metric-v {
+  font-family: "thunder", sans-serif;
+  font-size: 26px;
+  line-height: 1;
+  color: #fff;
+}
+.work__metric-k {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.55;
 }
 .work__meta {
   display: flex;

@@ -23,8 +23,8 @@
 }
 .nav__brand-name {
   font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-weight: 500;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 .nav__brand-name--last {
@@ -34,15 +34,16 @@
 .nav__links {
   display: flex;
   gap: 28px;
-  font-size: 13px;
+  font-size: 12px;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.16em;
 }
 .nav__links a {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  opacity: 0.9;
+  opacity: 0.75;
   transition: opacity 0.3s var(--ease);
 }
 .nav__links a span {

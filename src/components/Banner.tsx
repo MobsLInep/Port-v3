@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import { Globe } from "lucide-react";
 import "./Banner.css";
 
 const Scene3D = lazy(() => import("../three/Scene3D"));
@@ -6,6 +7,9 @@ const Scene3D = lazy(() => import("../three/Scene3D"));
 export default function Banner({ ready }: { ready: boolean }) {
   return (
     <section className="banner" id="home">
+
+      <img className="banner__oval banner__oval--top" src="/assets/images/banner/oval_desktop_top.svg" alt="" />
+
       {/* HDR cloudy-sky background + rotating red flower (mounted after intro) */}
       <div className="banner__3d">
         {ready && (
@@ -16,13 +20,23 @@ export default function Banner({ ready }: { ready: boolean }) {
       </div>
 
       {/* thin elliptical ring split top/bottom so the flower sits inside it */}
-      <img className="banner__oval banner__oval--top" src="/assets/images/banner/oval_desktop_top.svg" alt="" />
+
       <img className="banner__oval banner__oval--bot" src="/assets/images/banner/oval_desktop_bot.svg" alt="" />
+
+      {/* viewfinder crosshair markers */}
+      <span className="banner__cross banner__cross--a" aria-hidden />
+      <span className="banner__cross banner__cross--b" aria-hidden />
 
       {/* info box under the nav */}
       <div className="banner__infobox">
-        <span className="banner__infobox-title">AI / ML Researcher &amp; Engineer</span>
-        <span className="banner__infobox-sub">A Data Science &amp; AI undergrad building<br />intelligent systems, based in India</span>
+        <div className="banner__infobox-row banner__infobox-row--title">
+          <span className="banner__infobox-title">AI / ML Researcher &amp; Engineer</span>
+          <Globe className="banner__infobox-icon" />
+        </div>
+        <div className="banner__infobox-row banner__infobox-row--body">
+          <span className="banner__infobox-date">EST 24</span>
+          <span className="banner__infobox-sub">Building intelligent systems /<br />based in India</span>
+        </div>
       </div>
 
       {/* bottom bar */}
@@ -32,7 +46,7 @@ export default function Banner({ ready }: { ready: boolean }) {
       </div>
 
       <div className="banner__scroll">
-        <span>Scroll down to explore</span>
+        <span className="banner__scroll-label">Scroll down to explore</span>
         <span className="banner__scroll-btn">↓</span>
       </div>
     </section>

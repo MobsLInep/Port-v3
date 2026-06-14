@@ -5,7 +5,9 @@ import { useSmoothScroll } from "./hooks/useSmoothScroll";
 import Loader from "./components/Loader";
 import Nav from "./components/Nav";
 import Banner from "./components/Banner";
-import { About, WhatIDo, Philosophy, Playbook, Services, Works } from "./components/Sections";
+import Capabilities from "./components/Capabilities";
+import Experience from "./components/Experience";
+import { About, Crafting, Philosophy, Playbook, Services, Works } from "./components/Sections";
 import Footer from "./components/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -52,8 +54,10 @@ export default function App() {
       <main>
         <Banner ready={loaded} />
         <About />
-        <WhatIDo />
+        <Capabilities />
+        <Crafting />
         <Works />
+        <Experience />
         <Philosophy />
         <Services />
         <Playbook />
