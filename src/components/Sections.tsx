@@ -9,13 +9,13 @@ export function About() {
           <img src="/assets/images/about/aster.svg" alt="" /> About me
           <img src="/assets/images/about/aster.svg" alt="" />
         </p>
-        <h2 className="about__head font-editorial" data-reveal>
+        <h2 className="about__head font-editorial" data-letters>
           I build intelligent systems across machine learning, generative AI, and security.
         </h2>
       </div>
 
       <div className="about__torn" data-reveal>
-        <img src="/assets/images/about/whoimg.png" alt="Shreyansh Samaddar" />
+        <img src="/assets/images/about/whoimg.png" alt="Shreyansh Samaddar" data-parallax="6" />
       </div>
 
       <p className="about__mission font-editorial" data-reveal>
@@ -29,8 +29,8 @@ export function About() {
 export function Crafting() {
   return (
     <>
-      <section className="crafting">
-        <h2 className="crafting__title font-thunder" data-reveal>
+      <section className="crafting" id="crafting">
+        <h2 className="crafting__title font-thunder" data-letters>
           Building<br />Intelligence
         </h2>
         <div className="crafting__meta">
@@ -80,13 +80,13 @@ const PROJECTS = [
 export function Works() {
   return (
     <section className="works" id="works">
-      <span className="works__watermark font-thunder" aria-hidden>Works</span>
+      <span className="works__watermark font-thunder" aria-hidden data-parallax="12">Works</span>
 
       <header className="works__head" data-reveal>
         <p className="section-label section-label--gold">
           <img src="/assets/images/works/motif.svg" alt="" /> Works
         </p>
-        <h2 className="works__title font-editorial">Featured Projects</h2>
+        <h2 className="works__title font-editorial" data-letters>Featured Projects</h2>
       </header>
 
       <div className="works__list">
@@ -126,7 +126,7 @@ export function Works() {
 /* ================= PHILOSOPHY (cream) ================= */
 export function Philosophy() {
   return (
-    <section className="phil">
+    <section className="phil" id="philosophy">
       <img className="phil__motif" src="/assets/images/phil/motif.svg" alt="" />
       <p className="section-label section-label--dark" data-reveal>My philosophy</p>
       <blockquote className="phil__quote font-editorial" data-reveal>
@@ -155,7 +155,7 @@ export function Services() {
       <div className="services__stack">
         <h2 className="services__list font-thunder">
           {SERVICES.map((s) => (
-            <span key={s} data-reveal>{s}</span>
+            <span key={s} data-letters>{s}</span>
           ))}
         </h2>
         <span className="services__provided font-editorial">Capabilities</span>
@@ -176,9 +176,9 @@ const playImgs = playGroups.flatMap((g) => [1, 2, 3].map((n) => `/assets/images/
 
 export function Playbook() {
   return (
-    <section className="playbook">
+    <section className="playbook" id="playbook">
       <header className="playbook__head" data-reveal>
-        <h2 className="playbook__title font-playground">Playbook</h2>
+        <h2 className="playbook__title font-playground" data-letters>Playbook</h2>
         <p className="playbook__sub">experiments with models, agents, simulations and the occasional rabbit hole</p>
       </header>
 

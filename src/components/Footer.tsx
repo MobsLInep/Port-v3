@@ -27,7 +27,7 @@ export default function Footer({ ready }: { ready: boolean }) {
   };
 
   return (
-    <footer className="footer">
+    <footer className="footer" id="footer">
       <div className="footer__cta">
         <h2 className="footer__benchmark font-thunder" data-reveal>
           Have a problem worth solving with AI? Let&rsquo;s build the{" "}
