@@ -15,10 +15,15 @@ export function useSmoothScroll(enabled: boolean) {
     if (!enabled) return;
 
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      // a heavier, weighted glide: longer settle + low lerp gives momentum the
+      // feel of mass behind it rather than a snappy 1:1 wheel response.
+      duration: 1.5,
+      lerp: 0.08,
+      easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      touchMultiplier: 1.5,
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.2,
+      syncTouch: true,
     });
 
     lenis.on("scroll", ScrollTrigger.update);

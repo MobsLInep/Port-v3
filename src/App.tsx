@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useSmoothScroll } from "./hooks/useSmoothScroll";
+import { initLetterReveals, initParallax } from "./lib/scrollFx";
 import Loader from "./components/Loader";
 import Nav from "./components/Nav";
 import Banner from "./components/Banner";
@@ -20,8 +21,10 @@ export default function App() {
   useEffect(() => {
     if (!loaded) return;
 
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     const ctx = gsap.context(() => {
-      // Scroll-triggered reveals
+      // Scroll-triggered reveals (body copy, images)
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
         gsap.to(el, {
           opacity: 1,
@@ -35,6 +38,14 @@ export default function App() {
           },
         });
       });
+
+      if (reduceMotion) {
+        // reduced-motion users get static, fully-visible headings and no parallax
+        gsap.set("[data-letters]", { opacity: 1 });
+      } else {
+        initLetterReveals(document);
+        initParallax(document);
+      }
 
       // refresh once images/fonts settle
       ScrollTrigger.refresh();

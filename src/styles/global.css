@@ -100,8 +100,62 @@ html.lenis body {
   width: 100%;
 }
 
+/* Global film-grain: a fixed full-viewport noise layer over the entire page,
+   independent of scroll, blended onto whatever sits beneath it. */
+body::after {
+  content: "";
+  position: fixed;
+  /* oversized so jumping the layer never exposes an edge */
+  top: -150%;
+  left: -150%;
+  width: 400%;
+  height: 400%;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.6;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 440px 440px;
+  /* snap the tile to a new offset each step so the grain appears re-randomized */
+  animation: grain-shift 0.5s steps(1) infinite;
+}
+
+/* discrete jumps (not eased) make each frame read as a fresh noise field */
+@keyframes grain-shift {
+  0%   { transform: translate(0, 0); }
+  10%  { transform: translate(-7%, -11%); }
+  20%  { transform: translate(13%, 6%); }
+  30%  { transform: translate(-9%, 17%); }
+  40%  { transform: translate(11%, -19%); }
+  50%  { transform: translate(-15%, 8%); }
+  60%  { transform: translate(6%, 14%); }
+  70%  { transform: translate(-12%, -6%); }
+  80%  { transform: translate(9%, 21%); }
+  90%  { transform: translate(-4%, -16%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::after { animation: none; }
+}
+
 /* generic scroll-reveal initial state */
 [data-reveal] {
   opacity: 0;
   transform: translateY(40px);
+}
+
+/* per-letter reveal: each glyph is an independently transformable box */
+.char {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+}
+/* scrub reveal starts hidden; JS animates to visible (and forces visible for
+   reduced-motion / no-JS via the gsap.set fallback) */
+[data-letters] .char {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-letters] .char {
+    opacity: 1;
+  }
 }

@@ -4,7 +4,8 @@
   height: 100svh;
   min-height: 680px;
   overflow: visible;
-  background: linear-gradient(180deg, #d9d6d9 0%, #d6d0d2 52%, #ddc8c5 100%);
+  /* sky: dull/muted blue overhead fading to a soft near-white horizon */
+  background: linear-gradient(180deg, #7e9cb2 0%, #9fbac9 28%, #c2d6e2 55%, #e2eef4 80%, #f6fbff 100%);
 }
 
 /* film grain / paper-noise overlay for editorial depth */
@@ -24,6 +25,10 @@
   position: absolute;
   inset: 0;
   z-index: 2;
+}
+/* clouds sit behind the top oval ring (z-index 2) but above the sky gradient */
+.banner__3d--clouds {
+  z-index: 1;
 }
 
 /* elliptical ring framing the flower */

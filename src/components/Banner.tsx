@@ -8,9 +8,18 @@ export default function Banner({ ready }: { ready: boolean }) {
   return (
     <section className="banner" id="home">
 
+      {/* drifting clouds on their own layer, behind the top oval ring */}
+      <div className="banner__3d banner__3d--clouds">
+        {ready && (
+          <Suspense fallback={null}>
+            <Scene3D variant="clouds" />
+          </Suspense>
+        )}
+      </div>
+
       <img className="banner__oval banner__oval--top" src="/assets/images/banner/oval_desktop_top.svg" alt="" />
 
-      {/* HDR cloudy-sky background + rotating red flower (mounted after intro) */}
+      {/* rotating red flower (mounted after intro), in front of the top oval */}
       <div className="banner__3d">
         {ready && (
           <Suspense fallback={null}>
@@ -30,7 +39,7 @@ export default function Banner({ ready }: { ready: boolean }) {
       {/* info box under the nav */}
       <div className="banner__infobox">
         <div className="banner__infobox-row banner__infobox-row--title">
-          <span className="banner__infobox-title">AI / ML Researcher &amp; Engineer</span>
+          <span className="banner__infobox-title" data-letters>AI / ML Researcher &amp; Engineer</span>
           <Globe className="banner__infobox-icon" />
         </div>
         <div className="banner__infobox-row banner__infobox-row--body">
